@@ -98,6 +98,12 @@
             font-weight: bold;
             border-radius: 5px;
             box-shadow: 0 4px 15px rgba(255, 74, 90, 0.4);
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
         }
 
         .container {
@@ -143,6 +149,7 @@
 
         .card p {
             color: #a6a6a6;
+            margin-bottom: 15px;
         }
 
         footer {
@@ -159,7 +166,7 @@
 <body>
 
     <header id="navbar">
-        <div class="logo"></div>
+        <div class="logo">Mi pagina</div>
         <nav>
             <a href="#inicio" class="nav-item">Inicio</a>
             <a href="#sabermas" class="nav-item">Mi Informacion</a>
@@ -168,8 +175,8 @@
 
     <section class="hero" id="inicio">
         <h1 class="anim-title">Hola soy <span>Leonardo Gabriel Caceres</span></h1>
-        <p class="anim-text">Soy estudiante de Ciencias de la Computacionn si quieres saber mas apreta abajo.</p>
-        <a href="#sabermas" class="btn anim-btn">Saber mas </a>
+        <p class="anim-text">Soy estudiante de Ciencias de la Computación, si quieres saber más apreta abajo.</p>
+        <a href="#sabermas" class="btn anim-btn">Saber mas</a>
     </section>
 
     <main class="container" id="sabermas">
@@ -178,22 +185,22 @@
         <div class="features">
             <div class="card">
                 <h3>Mis intereses</h3>
-                <p>Actualmente soy estudiande de CCOMP me gusta los videojuegos y el futbol, ingrese a ciencias de la
-                    computacion por mi interes en los videojuegos y como se comportan asi desperto mi interes y trato de
-                    especializarme en ciberseguridad .</p>
+                <p>Estudiante de CCOMP, me gustan los videojuegos, el fútbol y me especializo en ciberseguridad.</p>
             </div>
 
             <div class="card">
-                <h3>Contactos </h3>
-                <p>Github:
-                <p>https://github.com/leonardogaaa.</p>
-                <p>Mail:</p>
-                <p>leonardo.caceres.humpiri@ucsp.edu.pe</p>
+                <h3>Contactos</h3>
+                <p>Github: https://github.com/leonardogaaa</p>
+                <p>Mail: leonardo.caceres.humpiri@ucsp.edu.pe</p>
             </div>
 
             <div class="card">
                 <h3>Relaciones Web</h3>
-                <p>tu viejo .</p>
+                <a href="https://discord.com/channels/@me/1501786604929552466/1517739650884571227" target="_blank"
+                    class="btn">Milton Vilca</a>
+                <a href="https://google.com" target="_blank" class="btn">Mi sitio web</a>
+                <a href="https://google.com" target="_blank" class="btn">Mi sitio web</a>
+                <a href="https://google.com" target="_blank" class="btn">Mi sitio web</a>
             </div>
         </div>
     </main>
@@ -201,7 +208,6 @@
     <footer>
         <p>&copy; Made In Peru</p>
     </footer>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -211,62 +217,14 @@
 
         window.addEventListener('load', () => {
             const tl = gsap.timeline();
-
             tl.from("#navbar", { duration: 1, y: -50, opacity: 0, ease: "power4.out" });
-
             tl.to(".anim-title", { duration: 1, y: 0, opacity: 1, ease: "power3.out" }, "-=0.5")
                 .to(".anim-text", { duration: 1, y: 0, opacity: 1, ease: "power3.out" }, "-=0.7")
                 .to(".anim-btn", { duration: 0.8, scale: 1, opacity: 1, ease: "back.out(1.7)" }, "-=0.6");
         });
 
-        gsap.to(".section-title", {
-            scrollTrigger: {
-                trigger: ".section-title",
-                start: "top 80%",
-            },
-            opacity: 1,
-            y: -20,
-            duration: 1,
-            ease: "power2.out"
-        });
-
-        gsap.to(".card", {
-            scrollTrigger: {
-                trigger: ".features",
-                start: "top 75%",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power4.out"
-        });
-
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - (rect.width / 2);
-                const y = e.clientY - rect.top - (rect.height / 2);
-
-                gsap.to(card, {
-                    rotationY: x * 0.1,
-                    rotationX: -y * 0.1,
-                    transformPerspective: 1000,
-                    ease: "power1.out",
-                    duration: 0.3
-                });
-            });
-
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, {
-                    rotationY: 0,
-                    rotationX: 0,
-                    ease: "power1.out",
-                    duration: 0.5
-                });
-            });
-        });
+        gsap.to(".section-title", { scrollTrigger: { trigger: ".section-title", start: "top 80%" }, opacity: 1, y: -20, duration: 1 });
+        gsap.to(".card", { scrollTrigger: { trigger: ".features", start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.2 });
     </script>
 </body>
 
